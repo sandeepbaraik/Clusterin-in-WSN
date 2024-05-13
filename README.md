@@ -12,5 +12,5 @@ The project requires the matplotlib library for visualization. Ensure it is inst
 # Usage #
 To run the project, execute the GeneticAlgo.py script using Python.
 
-**## Command ##**
+# Command #
 python GeneticAlgo.py

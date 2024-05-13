@@ -1,4 +1,4 @@
-Energy Efficient Clustering in Wireless Sensor Network (WSN) using Genetic Algorithm
+## Energy Efficient Clustering in Wireless Sensor Network (WSN) using Genetic Algorithm ##
 
 Overview
 This project aims to determine the optimal number of clusters within a Wireless Sensor Network (WSN) with the core objective of minimizing energy consumption within the infrastructure, thereby enhancing its longevity.

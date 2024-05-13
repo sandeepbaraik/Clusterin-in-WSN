@@ -6,10 +6,6 @@ Created on Mon Apr  6 06:37:46 2020
 """
 import matplotlib.pyplot as plt 
 
-#def pl(node_collection,bs_xloc,bs_yloc):
-#	initialize(node_collection,bs_xloc,bs_yloc)
-#	show()
-
 def initialize(node_collection,bs_xloc,bs_yloc,comm_rounds):
 	x=[]
 	y=[]

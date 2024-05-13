@@ -48,14 +48,9 @@ class Individual(object):
 	def create_gnome(self):
 		#####NEW CODE
 		chromosome=[]
-#		#return [self.mutated_genes( ) for _ in range(gnome_len)]
-#		#for _ in range(chromosome_size):
-#		chromosome=self.random_num()
-		#chromosome.append(gene)
-		#NEW CODE END
 		for _ in range(chromosome_size):
 			chromosome.append(self.mutated_genes())
-#		
+	
 		return chromosome
 			
 	
@@ -79,13 +74,10 @@ class Individual(object):
 	
 
 	def calc_fitness(self):
-		#print("Chromosome before",self.chromosome)
 		chrom=wsn.create_cluster(self.chromosome)
 		self.chromosome=chrom
 		
 		fitness,chromosome=wsn.network_run(self.chromosome)
-		#print("Chromosome After",self.chromosome)
-		#print("fitness: chrom",fitness,chromosome)
 		return fitness
 		
 
@@ -98,20 +90,6 @@ def main():
 	
 	for _ in range(POPULATION_SIZE):
 		gnome=Individual.create_gnome()
-#		while gnome.count(1)==0:
-#			gnome=Individual.create_gnome()
-#		if gnome.count(1)>10:
-#			ch=[]
-#			ll=[]
-#			prob=random.randrange(5,10)
-#			#print("Prob",prob)
-#			for i in range(len(gnome)):
-#				if gnome[i]==1:
-#					ch.append(i)
-#					ll.extend(random.sample(ch,prob))
-#			for i in range(len(gnome)):
-#				if gnome[i]==1 and i not in ll:
-#					gnome[i]=0
 		population.append(Individual(gnome))
 		
 	best=population[0].chromosome
@@ -141,9 +119,6 @@ def main():
 		
 		population=new_generation
 		
-		
-		
-		#print("Generation: {} \tChromosome: {} \tFitness:{}".format(generation,population[0].chromosome,population[0].fitness))
 		print("Generation: {} \tFitness:{}".format(generation,population[0].fitness))
 		print("No of CH",(population[0].chromosome).count(1))
 		generation+=1
@@ -155,11 +130,9 @@ def main():
 				best=population[0].chromosome
 				diff=0
 		
-	#print("Generation: {} \tChromosome: {} \tFitness:{}".format(generation,population[0].chromosome,population[0].fitness))
 	print("Generation: {} \tFitness:{}".format(generation,population[0].fitness))
 	print("No of CH",(population[0].chromosome).count(1))
 	wsn.run(population[0].chromosome,(population[0].chromosome).count(1))
-	#print("No of CH",(population[0].chromosome).count(1))
-#	
+	
 if __name__ == '__main__':
 	main()

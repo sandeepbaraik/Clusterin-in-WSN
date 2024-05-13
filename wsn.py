@@ -168,31 +168,6 @@ def create_cluster(chrom):
 	#If a cluster head has no cluster member
 	update_network()
 	
-	#if no of CH is more than 10
-#	if chromosome.count(1)>10:
-#		ch=[]
-#		ll=[]
-#		prob=random.randrange(5,10)
-#		#print("Prob",prob)
-#		for i in range(len(chromosome)):
-#			if chromosome[i]==1:
-#				ch.append(i)
-#		ll.extend(random.sample(ch,prob))
-#		for i in range(len(chromosome)):
-#			if chromosome[i]==1 and i not in ll:
-#				chromosome[i]=0
-#		
-#		#Find CH
-#		for i in range(len(chromosome)):
-#			if(chromosome[i]==0):
-#				find_cluster_head(i)
-#		for i in range(len(chromosome)):
-#			if chromosome[i]==0 and 'ch' not in node_collection[i]:
-#				find_cluster_head(i)
-#				update_cm(i)
-#		
-	
-	
 	#Cluster for CH nodes
 	clus=0
 	for i in range(len(chromosome)):
@@ -214,19 +189,16 @@ def create_cluster(chrom):
 def tdma_schedule():
 	global chromosome
 	global node_collection
-	#global EiCH
 	for i in range(len(chromosome)):
 		if chromosome[i]==1 and 'cm' in node_collection[i] and len(node_collection[i]['cm'])!=0:
 			for j in (node_collection[i]['cm']):
 				if chromosome[j]!=-1:
 					dist=distance(node_collection[i]['xloc'],node_collection[i]['yloc'],node_collection[j]['xloc'],node_collection[j]['yloc'])
 					energy=rem_trans_energy(i,dist)
-					#EiCH+=energy
 					find_cluster_energy(energy,i)
 				
 					#Energy consumption of CMs for receiving the TDMA schedule
 					energy=rem_recp_energy(chromosome[j])
-#					EiCH+=energy
 					find_cluster_energy(energy,chromosome[j])
 
 		
@@ -279,16 +251,6 @@ def network_run(chrom):
 			if chromosome[ch]==-1:
 				clus=node_collection[i]['cluster']
 				chromosome=reclustering(clus)
-				#EiCH,Erx=tdma_schedule(chromosome)
-	
-			
-	
-	
-	#Message sent from base_station to all Nodes
-#	for i in range(len(chromosome)):
-#		if chromosome[i]!=-1:
-#			energy=rem_recp_energy(i)
-#			find_cluster_energy(energy,i)
 
 	#Message from cluster head to their respective cluster members regarding tdma schedule
 	tdma_schedule()
@@ -371,12 +333,6 @@ def network_run(chrom):
 	ce=0
 	for i in range(len(cluster_energy)):
 		ce+=cluster_energy[i]
-	#print("chromosome",chromosome)
-	#print("CH",chromosome.count(1))
-#	for i in range(len(node_collection)):
-#		#if chromosome[i]==1:
-#			
-#		print(node_collection[i],end='\n')
 	
 	#Distance of CH from BS
 	Total_dist=0
@@ -413,15 +369,11 @@ def run(chrom,no_of_ch):
 			break
 		
 		fitness,chromosome=network_run(chromosome)
-		#print("live cluster heads",chromosome.count(1))
-		
-		#print("chromosome",chromosome)
+
 		dead_nodes=chromosome.count(-1)
 		rounds+=1
 		print("ROUND NO", rounds)
 		print("No of dead sensor nodes",dead_nodes)
-#		for i in range(len(node_collection)):
-#			print("{:.2f}".format(node_collection[i]['energy']),",",end="")
 		
 		print()
 		if dead_nodes>=1 and flag1==0:
@@ -447,14 +399,6 @@ def run(chrom,no_of_ch):
 			comm_rounds.append(rounds-1)
 			round_count+=10
 		
-		
-			
-		
-		
-#		if dead_nodes>=50:
-#			for i in range(len(node_collection)):
-#				print("Energy",node_collection[i]['energy'])
-		
 	print("First node died at round:",fnd)
 	print("Tenth node died at round:",deadten)
 	print("Percentage of dead nodes: ",dead_nodes_percent)
@@ -466,8 +410,6 @@ def run(chrom,no_of_ch):
 		comm_rounds.append(last_elem)
 			
 	print("Comm",comm_rounds)
-#	global disp
-#	print("chdisp",disp)
 	plot.initialize(node_collection,bs_xloc,bs_yloc,comm_rounds)
 
 

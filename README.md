@@ -1,16 +1,16 @@
 ## Energy Efficient Clustering in Wireless Sensor Network (WSN) using Genetic Algorithm ##
 
-Overview
+# Overview #
 This project aims to determine the optimal number of clusters within a Wireless Sensor Network (WSN) with the core objective of minimizing energy consumption within the infrastructure, thereby enhancing its longevity.
 
-Algorithm
+# Algorithm #
 The project utilizes a Genetic Algorithm to find the optimal number of clusters within the WSN. Genetic Algorithms are heuristic search algorithms inspired by the process of natural selection and genetics.
 
-Dependencies
+# Dependencies #
 The project requires the matplotlib library for visualization. Ensure it is installed in your Python environment before running the code.
 
-Usage
+# Usage #
 To run the project, execute the GeneticAlgo.py script using Python.
 
-Command
+** Command **
 python GeneticAlgo.py
